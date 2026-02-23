@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Video - Phase 1</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+        #entry-section {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        #entry-section input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        #entry-section button {
+            padding: 10px 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-wrapper {
+            position: relative;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .participant-name {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .hidden { display: none; }
+        #roomName { margin-top: 10px; color: #888; }
+    </style>
+</head>
+<body>
+    <div id="entry-section">
+        <h1>Video Conference - Phase 1</h1>
+        <input type="text" id="nameInput" placeholder="Your Name" required>
+        <input type="text" id="roomInput" placeholder="Room Name" required>
+        <button id="joinBtn">Join Room</button>
+        <div id="roomName"></div>
+    </div>
+
+    <div id="call-section" class="hidden">
+        <div id="videos-grid">
+            <!-- Local video -->
+            <div class="video-wrapper" id="local-video-wrapper">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <div class="participant-name" id="localParticipantName">You</div>
+            </div>
+            <!-- Remote videos will be added here -->
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
