@@ -199,7 +199,11 @@ function connectSignalingServer() {
 
   console.log("Connecting to signaling server...");
   // Use { transports: ['websocket'] } if you encounter polling issues behind proxies etc.
+<<<<<<< HEAD
   socket = io("http://192.168.5.67:3000", { forceNew: true }); // forceNew ensures a fresh connection
+=======
+  socket = io("http://192.168.5.67:3000", { forceNew: true });
+>>>>>>> 1980a3998c0df7fd1c505240c815f36e625483ec
   setupSocketListeners();
 }
 
